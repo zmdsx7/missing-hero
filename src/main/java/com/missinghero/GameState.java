@@ -283,7 +283,7 @@ public final class GameState {
     public GameState() {
 
         // Three walkable maps only: bedroom, living room, and a shared outdoor area.
-        // The 13 selected clues stay accessible across the consolidated maps.
+        // All 19 original clues stay in the game even though the maps are consolidated.
         for (Scene s : ORDER) {
             map.put(s, new ArrayList<>());
         }
@@ -293,7 +293,7 @@ public final class GameState {
                 "collar",
                 5,
                 8,
-                "ปลอกคอหลวมตกใกล้ประตู อาจหลุดเองหรือมีคนถอดออก ยังสรุปไม่ได้",
+                "ปลอกคอหลวมตกใกล้เตียงนอน อาจหลุดเองหรือมีคนถอดออก ยังสรุปไม่ได้",
                 false
         );
 
@@ -301,7 +301,7 @@ public final class GameState {
                 Scene.BEDROOM,
                 "door_scratch",
                 22,
-                9,
+                8,
                 "ใต้ประตูที่แง้มอยู่มีรอยเล็บเล็ก ๆ เหมือนฮีโร่ข่วนจากด้านใน",
                 true
         );
@@ -311,7 +311,7 @@ public final class GameState {
                 "ball",
                 11,
                 10,
-                "ลูกบอลมีรอยกัดใหม่ และรอยลากสิ้นสุดที่ประตูห้องนอน",
+                "ลูกบอลมีรอยกัดใหม่",
                 false
         );
 
@@ -329,7 +329,7 @@ public final class GameState {
         evidence(
                 Scene.LIVING,
                 "bowl",
-                5,
+                19,
                 5,
                 "ชามอาหารเหลืออยู่บางส่วนและมีรอยเท้าสดใหม่ ฮีโร่น่าจะอยู่ในบ้านตอนเช้า",
                 false
@@ -348,7 +348,7 @@ public final class GameState {
                 Scene.LIVING,
                 "photo",
                 15,
-                7,
+                3,
                 "รูปถ่ายฮีโร่เล่นกับเพื่อนสุนัข ด้านหลังเขียนว่า Best Friends",
                 false
         );
@@ -356,8 +356,8 @@ public final class GameState {
         evidence(
                 Scene.LIVING,
                 "parcel",
-                5,
-                9,
+                4,
+                4,
                 "พัสดุและขนมสุนัขของคนส่งของวางอยู่ในห้องนั่งเล่น ทำให้เขาดูน่าสงสัย",
                 false
         );
@@ -365,17 +365,17 @@ public final class GameState {
         evidence(
                 Scene.LIVING,
                 "receipt",
-                11,
-                9,
-                "ใบส่งของมีเวลา 07:35 น. สังเกตตัวเลขเพื่อนำไปไขรหัสลิ้นชักในห้องนี้",
+                5,
+                4,
+                "ใบส่งของมีเวลา 07:35 น. สังเกตตัวเลขเพื่อนำไปไขรหัสประตูในห้องนี้",
                 false
         );
 
         evidence(
                 Scene.LIVING,
                 "camera",
-                20,
-                8,
+                1,
+                3,
                 "เปิดกล้องวงจรปิดจากจอในห้องนั่งเล่น ภาพแรกเห็นเงาคนผ่านหน้าบ้าน ต้องซ่อมวงจรก่อนจึงรู้ว่าเป็น รปภ.",
                 false
         );
@@ -385,14 +385,14 @@ public final class GameState {
                 "drawer",
                 16,
                 10,
-                "ลิ้นชักในห้องนั่งเล่น · ใส่รหัสเพื่อหากุญแจ",
+                "ประตูห้องนั่งเล่น · ใส่รหัสเพื่อหากุญแจ",
                 Puzzle.DRAWER
         );
 
         device(
                 Scene.LIVING,
                 "cctv",
-                21,
+                1,
                 4,
                 "จอกล้องวงจรปิดในห้องนั่งเล่น · ต่อสายไฟ",
                 Puzzle.CAMERA
@@ -404,7 +404,7 @@ public final class GameState {
                 Scene.NEIGHBOR,
                 "paw_hero",
                 4,
-                4,
+                8,
                 "รอยเท้าฮีโร่เริ่มจากบ้านแล้วออกมาตามทางเดิน ไม่พบรอยถูกอุ้ม",
                 false
         );
@@ -413,7 +413,7 @@ public final class GameState {
                 Scene.NEIGHBOR,
                 "paw_other",
                 9,
-                4,
+                8,
                 "มีรอยเท้าสุนัขอีกชุดเดินคู่กันอยู่หน้าบ้านเพื่อนบ้าน",
                 false
         );
@@ -902,7 +902,7 @@ public final class GameState {
             if (scene == Scene.LIVING && !drawerSolved) {
                 say(
                         "ต้องหากุญแจบ้านก่อน",
-                        "ใบส่งของในห้องนั่งเล่นมีตัวเลขที่ใช้เปิดลิ้นชัก"
+                        "ใบส่งของในห้องนั่งเล่นมีตัวเลขที่ใช้เปิดประตู"
                 );
                 return;
             }
@@ -1024,7 +1024,7 @@ public final class GameState {
 
             say(
                     "เจอกุญแจบ้าน!",
-                    "รหัสจากใบส่งของ 07:35 เปิดลิ้นชักได้ ภายในมีกุญแจบ้านสำหรับออกไปด้านนอก"
+                    "รหัสจากใบส่งของ 07:35 เปิดประตูได้ สำหรับออกไปด้านนอก"
             );
         } else {
             codeInput = "";

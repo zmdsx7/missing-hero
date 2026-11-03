@@ -274,7 +274,7 @@ public final class GamePanel extends JPanel implements KeyListener, MouseListene
 
         centered(
                 g,
-                "Hand-drawn Pixel Mystery  ·  Java OOP",
+                "Project OOP",
                 576,
                 682,
                 small,
